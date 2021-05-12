@@ -23,4 +23,4 @@ steps:
 
 - task: RunFromFileSystemTask@1
   inputs:
-    testPathInput: '$(Agent.BuildDirectory)\$(exportPath)\tst.mtbx'
+    testPathInput: '$(Agent.BuildDirectory)\$(exportPath)\tst.mtb'
