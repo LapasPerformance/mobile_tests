@@ -14,6 +14,13 @@ steps:
 - checkout: mobile_tests
   path: PutMyCodeHere
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd c:\windows\syswow64
+      cscript.exe "test2.vbs" $(exportPath)
+    workingDirectory: $(Agent.BuildDirectory)
+
 - task: RunFromFileSystemTask@1
   inputs:
-    testPathInput: '$(Agent.BuildDirectory)\PutMyCodeHere\Sample_test_Mobile_1'
+    testPathInput: '$(Agent.BuildDirectory)\$(exportPath)\tst.mtbx'
