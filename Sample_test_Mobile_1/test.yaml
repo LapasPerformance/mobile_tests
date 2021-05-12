@@ -28,4 +28,9 @@ steps:
       UFTBatchRunnerCMD.exe -source "$(Agent.BuildDirectory)\$(exportPath)\tst.mtb"
 
 
-
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'run_results.xml'
+    searchFolder: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report'
+    failTaskOnFailedTests: true
