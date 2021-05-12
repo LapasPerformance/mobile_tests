@@ -9,7 +9,7 @@ trigger:
 - master
 
 pool:
-  name:  NIMBUSCLIENT
+  name:  Default
 steps:
 - checkout: mobile_tests
   path: PutMyCodeHere
