@@ -9,7 +9,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name:  NIMBUSCLIENT
 steps:
 - checkout: mobile_tests
   path: PutMyCodeHere
