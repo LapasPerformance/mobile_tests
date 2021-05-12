@@ -1,2 +1,7 @@
 steps:
 - checkout: self
+  path: 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)\PutMyCodeHere'
+    publishLocation: 'pipeline'
