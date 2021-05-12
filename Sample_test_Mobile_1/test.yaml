@@ -27,17 +27,17 @@ steps:
       cd $(Agent.BuildDirectory)
       UFTBatchRunnerCMD.exe -source "$(Agent.BuildDirectory)\$(exportPath)\tst.mtb"
 
-
-- task: PublishTestResults@2
+- task: CmdLine@2
   inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: 'run_results.xml'
-    searchFolder: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report'
-    failTaskOnFailedTests: true
+    script: |
+      cd c:\windows\syswow64
+      cscript.exe "$(Agent.BuildDirectory)\test3.vbs" $(exportPath)
+    workingDirectory: '$(Agent.BuildDirectory)'
+
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report'
+    targetPath: '$(Agent.BuildDirectory)\$(exportPath)\MyResults'
     artifact: 'uft results'
     publishLocation: 'pipeline'
 
