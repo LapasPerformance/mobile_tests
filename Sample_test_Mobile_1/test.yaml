@@ -37,7 +37,7 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Agent.BuildDirectory)\$(exportPath)\MyResults'
+    targetPath: '$(Agent.BuildDirectory)\MyResults'
     artifact: 'uft results'
     publishLocation: 'pipeline'
 
