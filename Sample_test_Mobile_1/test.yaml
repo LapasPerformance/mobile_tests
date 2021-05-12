@@ -34,3 +34,8 @@ steps:
     testResultsFiles: 'run_results.xml'
     searchFolder: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report'
     failTaskOnFailedTests: true
+
+- task: PublishHtmlReport@1
+  inputs:
+    tabName: 'Publish UFT Report'
+    reportDir: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report\run_results.html'
