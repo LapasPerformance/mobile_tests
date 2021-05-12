@@ -12,7 +12,7 @@ pool:
   name:  Default
 steps:
 - checkout: mobile_tests
-  path: 
+  path: PutMyCodeHere
 
 - task: RunFromFileSystemTask@1
   inputs:
