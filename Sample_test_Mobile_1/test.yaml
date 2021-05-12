@@ -21,6 +21,11 @@ steps:
       cscript.exe "$(Agent.BuildDirectory)\test2.vbs" $(exportPath)
     workingDirectory: $(Agent.BuildDirectory)
 
-- task: RunFromFileSystemTask@1
+- task: CmdLine@2
   inputs:
-    testPathInput: '$(Agent.BuildDirectory)\$(exportPath)\tst.mtb'
+    script: |
+      cd $(Agent.BuildDirectory)
+      UFTBatchRunnerCMD.exe -source "$(Agent.BuildDirectory)\$(exportPath)\tst.mtb"
+
+
+
