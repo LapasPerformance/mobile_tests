@@ -1,7 +1,15 @@
+resources:
+  repositories:
+  - repository: mobile_tests # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: LapasPerformance
+    name: LapasPerformance/mobile_tests
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
 steps:
-- checkout: self
+- checkout: mobile_tests
   path: PutMyCodeHere
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)\PutMyCodeHere'
-    publishLocation: 'pipeline'
