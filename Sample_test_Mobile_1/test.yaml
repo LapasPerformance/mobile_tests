@@ -25,7 +25,7 @@ steps:
   inputs:
     script: |
       cd $(Agent.BuildDirectory)
-      UFTBatchRunnerCMD.exe -source "$(Agent.BuildDirectory)\$(exportPath)\tst.mtb"
+      UFTBatchRunnerCMD.exe -source "$(Agent.BuildDirectory)\$(exportPath)\tst.mtb" -parameter "deviceID=R58NA3KKZ6V"
 
 - task: CmdLine@2
   inputs:
