@@ -35,6 +35,12 @@ steps:
     searchFolder: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report'
     failTaskOnFailedTests: true
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report'
+    artifact: 'uft results'
+    publishLocation: 'pipeline'
+
 - task: PublishHtmlReport@1
   inputs:
     tabName: 'Publish UFT Report'
