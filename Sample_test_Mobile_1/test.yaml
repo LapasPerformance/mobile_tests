@@ -18,7 +18,7 @@ steps:
   inputs:
     script: |
       cd c:\windows\syswow64
-      cscript.exe "test2.vbs" $(exportPath)
+      cscript.exe "$(Agent.BuildDirectory)\test2.vbs" $(exportPath)
     workingDirectory: $(Agent.BuildDirectory)
 
 - task: RunFromFileSystemTask@1
