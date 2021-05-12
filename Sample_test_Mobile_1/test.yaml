@@ -1,6 +1,6 @@
 steps:
 - checkout: self
-  path: 
+  path: PutMyCodeHere
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)\PutMyCodeHere'
