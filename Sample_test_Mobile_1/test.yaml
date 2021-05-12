@@ -12,4 +12,8 @@ pool:
   name:  Default
 steps:
 - checkout: mobile_tests
-  path: PutMyCodeHere
+  path: 
+
+- task: RunFromFileSystemTask@1
+  inputs:
+    testPathInput: '$(Agent.BuildDirectory)\PutMyCodeHere\Sample_test_Mobile_1'
