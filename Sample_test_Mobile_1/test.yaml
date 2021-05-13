@@ -1,0 +1,36 @@
+resources:
+  repositories:
+  - repository: mobile_tests # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: LapasPerformance
+    name: LapasPerformance/mobile_tests
+
+trigger:
+- master
+
+pool:
+  name:  Default
+steps:
+- checkout: mobile_tests
+  path: $(exportPath)
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd c:\windows\syswow64
+      cscript.exe "$(Agent.BuildDirectory)\test4.vbs" $(exportPath) $(DeviceID)
+    workingDirectory: $(Agent.BuildDirectory)
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd c:\windows\syswow64
+      cscript.exe "$(Agent.BuildDirectory)\test3.vbs" $(exportPath)
+    workingDirectory: '$(Agent.BuildDirectory)'
+
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Agent.BuildDirectory)\MyResults'
+    artifact: 'uft results'
+    publishLocation: 'pipeline'
