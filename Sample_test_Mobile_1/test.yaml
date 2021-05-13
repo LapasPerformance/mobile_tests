@@ -18,14 +18,8 @@ steps:
   inputs:
     script: |
       cd c:\windows\syswow64
-      cscript.exe "$(Agent.BuildDirectory)\test2.vbs" $(exportPath)
+      cscript.exe "$(Agent.BuildDirectory)\test4.vbs" $(exportPath) $(DeviceID)
     workingDirectory: $(Agent.BuildDirectory)
-
-- task: CmdLine@2
-  inputs:
-    script: |
-      cd $(Agent.BuildDirectory)
-      UFTBatchRunnerCMD.exe -source "$(Agent.BuildDirectory)\$(exportPath)\tst.mtb" -parameter "Device=$(DeviceID)"
 
 - task: CmdLine@2
   inputs:
@@ -40,8 +34,3 @@ steps:
     targetPath: '$(Agent.BuildDirectory)\MyResults'
     artifact: 'uft results'
     publishLocation: 'pipeline'
-
-- task: PublishHtmlReport@1
-  inputs:
-    tabName: 'Publish UFT Report'
-    reportDir: '$(Agent.BuildDirectory)\$(exportPath)\Sample_test_Mobile_1\Report\Report\run_results.html'
